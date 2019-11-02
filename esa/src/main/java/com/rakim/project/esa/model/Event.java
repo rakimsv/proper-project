@@ -22,7 +22,7 @@ public class Event {
     @Id
     @GeneratedValue
     private Long id;
-    private Instant date;
+    private Instant date; 
     private String title;
     private String description;
     @ManyToMany
