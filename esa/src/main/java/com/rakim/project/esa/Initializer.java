@@ -29,7 +29,7 @@ class Initializer implements CommandLineRunner {
         Group sufces = repository.findByName("SUFC ES");
         Event e = Event.builder().title("Season kick-off!")
                 .description("First match of the season for the Knuts!")
-                .date(Instant.parse("2019-11-09T20:00:00.000Z"))
+                .date(Instant.parse("2019-09-11T20:00:00.000Z"))
                 .build();
         sufces.setEvents(Collections.singleton(e));
         repository.save(sufces);
