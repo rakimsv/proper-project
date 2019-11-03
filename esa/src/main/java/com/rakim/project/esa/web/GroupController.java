@@ -45,7 +45,7 @@ class GroupController {
                 .body(result);
     }
 
-    @PutMapping("/group/{id}")
+    @PostMapping("/group/{id}")
     ResponseEntity<Group> updateGroup(@Valid @RequestBody Group group) {
         log.info("Request to update group: {}", group);
         Group result = groupRepository.save(group);

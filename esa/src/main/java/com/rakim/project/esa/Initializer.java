@@ -21,18 +21,18 @@ class Initializer implements CommandLineRunner {
 
     @Override
     public void run(String... strings) {
-        Stream.of("XtremeKings ES", "Mighty Lionz ES", "Serpico ES",
-                "SUFC ES").forEach(name ->
+        Stream.of("Presentation", "Gaming", "Cinema",
+                "Ultimate Frisbee", "Climbing").forEach(name ->
                 repository.save(new Group(name))
         );
 
-        Group sufces = repository.findByName("SUFC ES");
-        Event e = Event.builder().title("Season kick-off!")
-                .description("First match of the season for the Knuts!")
-                .date(Instant.parse("2019-09-11T20:00:00.000Z"))
+        Group pres = repository.findByName("Presentation");
+        Event e = Event.builder().title("Breaking the 4th wall")
+                .description("Presenting meetup planner")
+                .date(Instant.parse("2019-11-04T11:50:00.000Z"))
                 .build();
-        sufces.setEvents(Collections.singleton(e));
-        repository.save(sufces);
+        pres.setEvents(Collections.singleton(e));
+        repository.save(pres);
 
         repository.findAll().forEach(System.out::println);
     }

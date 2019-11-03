@@ -12,7 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
-@Table(name = "team_list")
+@Table(name = "user_group")
 public class Group {
 
     @Id
@@ -20,16 +20,14 @@ public class Group {
     private Long id;
     @NonNull
     private String name;
-    private String abb;
-    private String game;
-    private String genre;
-    private String platform;
-    private String nation;
+    private String address;
+    private String city;
+    private String county;
+    private String country;
+    private String postalCode;
     @ManyToOne(cascade=CascadeType.PERSIST)
     private User user;
 
     @OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     private Set<Event> events;
-    
-    
 }

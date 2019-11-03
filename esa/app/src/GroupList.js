@@ -40,7 +40,7 @@ class GroupList extends Component {
     }
 
     const groupList = groups.map(group => {
-      const address = `${group.abb || ''} ${group.game || ''} ${group.genre || ''}`;
+      const address = `${group.address || ''} ${group.city || ''} ${group.county || ''}`;
       return <tr key={group.id}>
         <td style={{whiteSpace: 'nowrap'}}>{group.name}</td>
         <td>{address}</td>
@@ -53,7 +53,7 @@ class GroupList extends Component {
         })}</td>
         <td>
           <ButtonGroup>
-            <Button size="sm" color="primary" tag={Link} to={"/groups/" + group.id}>Edit</Button>
+            <Button size="sm" color="info" tag={Link} to={"/groups/" + group.id}>Update</Button>
             <Button size="sm" color="danger" onClick={() => this.remove(group.id)}>Delete</Button>
           </ButtonGroup>
         </td>
@@ -65,15 +65,15 @@ class GroupList extends Component {
         <AppNavbar/>
         <Container fluid>
           <div className="float-right">
-            <Button color="success" tag={Link} to="/groups/new">Add Team</Button>
+            <Button color="success" tag={Link} to="/groups/new">Add Group</Button>
           </div>
-          <h3>ESA Teams</h3>
+          <h3>My Plans</h3>
           <Table className="mt-4">
             <thead>
             <tr>
-              <th width="20%">Name</th>
+              <th width="20%">Category</th>
               <th width="20%">Location</th>
-              <th>Events</th>
+              <th>Event(s)</th>
               <th width="10%">Actions</th>
             </tr>
             </thead>
