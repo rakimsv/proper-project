@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface PlanRepository extends JpaRepository<Plan, Long> {
     Plan findByName(String name);
+    List<Plan> findAllByUserId(String id);
 }

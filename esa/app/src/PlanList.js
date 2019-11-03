@@ -1,34 +1,43 @@
 import React, { Component } from 'react';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import AppNavbar from './AppNavbar';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
 
 class PlanList extends Component {
+	 static propTypes = {
+		    cookies: instanceOf(Cookies).isRequired
+		  };
 
   constructor(props) {
     super(props);
-    this.state = {plans: [], isLoading: true};
+    const {cookies} = props;
+    this.state = {plans: [], csrfToken: cookies.get('XSRF-TOKEN'), isLoading: true};
     this.remove = this.remove.bind(this);
   }
 
   componentDidMount() {
     this.setState({isLoading: true});
 
-    fetch('api/plans')
+    fetch('api/plans', {credentials: 'include'})
       .then(response => response.json())
       .then(data => this.setState({plans: data, isLoading: false}));
+
   }
 
   async remove(id) {
     await fetch(`/api/plan/${id}`, {
       method: 'DELETE',
       headers: {
+    	'X-XSRF-TOKEN': this.state.csrfToken,
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include'
     }).then(() => {
-      let updatedplans = [...this.state.plans].filter(i => i.id !== id);
-      this.setState({plans: updatedplans});
+      let updatedPlans = [...this.state.plans].filter(i => i.id !== id);
+      this.setState({plans: updatedPlans});
     });
   }
 
@@ -67,13 +76,13 @@ class PlanList extends Component {
           <div className="float-right">
             <Button color="success" tag={Link} to="/plans/new">Create</Button>
           </div>
-          <h3>My Plans</h3>
+          <h3>Address Book</h3>
           <Table className="mt-4">
             <thead>
             <tr>
-              <th width="20%">Plan</th>
+              <th width="20%">Name</th>
               <th width="20%">Location</th>
-              <th>Description</th>
+              <th>Notes</th>
               <th width="10%">Actions</th>
             </tr>
             </thead>
@@ -87,4 +96,4 @@ class PlanList extends Component {
   }
 }
 
-export default PlanList;
+export default withCookies(withRouter(PlanList));
