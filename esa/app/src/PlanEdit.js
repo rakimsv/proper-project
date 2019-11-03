@@ -16,7 +16,8 @@ class PlanEdit extends Component {
     city: '',
     county: '',
     country: '',
-    postalCode: ''
+    postCode: '',
+    notes: ''
   };
 
   constructor(props) {
@@ -68,7 +69,7 @@ class PlanEdit extends Component {
 
   render() {
     const {item} = this.state;
-    const title = <h2>{item.id ? 'Edit Plan' : 'Add Plan'}</h2>;
+    const title = <h2>{item.id ? 'Edit Contact' : 'Add Contact'}</h2>;
 
     return <div>
       <AppNavbar/>
@@ -78,8 +79,13 @@ class PlanEdit extends Component {
           <FormGroup>
             <Label for="name">Name</Label>
             <Input type="text" name="name" id="name" value={item.name || ''}
-                   onChange={this.handleChange} autoComplete="name"/>
+                   onChange={this.handleChange}/>
           </FormGroup>
+	      <FormGroup>
+	        <Label for="name">Phone Number</Label>
+	        <Input type="text" name="phone" id="phone" value={item.phone || ''}
+	               onChange={this.handleChange}/>
+	      </FormGroup>
           <FormGroup>
             <Label for="address">Address</Label>
             <Input type="text" name="address" id="address" value={item.address || ''}
@@ -102,11 +108,16 @@ class PlanEdit extends Component {
                      onChange={this.handleChange}/>
             </FormGroup>
             <FormGroup className="col-md-3 mb-3">
-              <Label for="country">Postal Code</Label>
-              <Input type="text" name="postalCode" id="postalCode" value={item.postalCode || ''}
+              <Label for="country">Post Code</Label>
+              <Input type="text" name="postCode" id="postCode" value={item.postCode || ''}
                      onChange={this.handleChange}/>
             </FormGroup>
           </div>
+	        <FormGroup>
+	          <Label for="notes">Notes</Label>
+	          <Input type="text" name="notes" id="notes" value={item.notes || ''}
+	                 onChange={this.handleChange}/>
+	        </FormGroup>          
           <FormGroup>
             <Button color="success" type="submit">Save</Button>{' '}
             <Button color="danger" tag={Link} to="/plans">Cancel</Button>

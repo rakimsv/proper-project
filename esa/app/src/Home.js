@@ -50,15 +50,16 @@ class Home extends Component {
   render() {
     const message = this.state.user ?
       <h2>Welcome, {this.state.user.name}!</h2> :
-      <p>Please log in to manage your plans.</p>;
+      <p>Please log in to manage your contacts :)</p>;
 
     const button = this.state.isAuthenticated ?
       <div>
-        <Button color="info"><Link to="/plans">Manage Plans</Link></Button>
+        <Button color="default"><Link to="/plans">Manage contacts</Link></Button>
         <br/>
-        <Button color="danger" onClick={this.logout}>Logout</Button>
+        <br/>
+        <Button color="danger" onClick={this.logout}>Log out</Button>
       </div> :
-      <Button color="success" onClick={this.login}>Login</Button>;
+      <Button color="success" onClick={this.login}>Log in</Button>;
 
     return (
       <div>

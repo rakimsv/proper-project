@@ -20,11 +20,13 @@ public class Plan {
     private Long id;
     @NonNull
     private String name;
+    private String phone;
     private String address;
     private String city;
     private String county;
     private String country;
-    private String postalCode;
+    private String postCode;
+    private String notes;
     @ManyToOne(cascade=CascadeType.PERSIST)
     private User user;
 

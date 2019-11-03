@@ -49,17 +49,12 @@ class PlanList extends Component {
     }
 
     const planList = plans.map(plan => {
-      const address = `${plan.address || ''} ${plan.city || ''} ${plan.county || ''}`;
+      const address = `${plan.address || ''} ${plan.city || ''} ${plan.county || ''} ${plan.postCode || ''}`;
       return <tr key={plan.id}>
         <td style={{whiteSpace: 'nowrap'}}>{plan.name}</td>
+        <td style={{whiteSpace: 'nowrap'}}>{plan.phone}</td>
         <td>{address}</td>
-        <td>{plan.events.map(event => {
-          return <div key={event.id}>{new Intl.DateTimeFormat('en-GB', {
-            year: 'numeric',
-            month: 'long',
-            day: '2-digit'
-          }).format(new Date(event.date))}: {event.title}</div>
-        })}</td>
+        <td style={{whiteSpace: 'nowrap'}}>{plan.notes}</td>
         <td>
           <ButtonGroup>
             <Button size="sm" color="info" tag={Link} to={"/plans/" + plan.id}>Update</Button>
@@ -76,12 +71,13 @@ class PlanList extends Component {
           <div className="float-right">
             <Button color="success" tag={Link} to="/plans/new">Create</Button>
           </div>
-          <h3>Address Book</h3>
+          <h3>My Contacts</h3>
           <Table className="mt-4">
             <thead>
             <tr>
               <th width="20%">Name</th>
-              <th width="20%">Location</th>
+              <th width="15%">Phone</th>
+              <th width="20%">Address</th>
               <th>Notes</th>
               <th width="10%">Actions</th>
             </tr>
