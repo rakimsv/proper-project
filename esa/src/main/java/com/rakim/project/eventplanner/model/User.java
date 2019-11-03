@@ -1,4 +1,4 @@
-package com.rakim.project.esa.model;
+package com.rakim.project.eventplanner.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

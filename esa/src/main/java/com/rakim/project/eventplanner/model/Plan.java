@@ -1,4 +1,4 @@
-package com.rakim.project.esa.model;
+package com.rakim.project.eventplanner.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,8 +12,8 @@ import java.util.Set;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
-@Table(name = "user_group")
-public class Group {
+@Table(name = "plan_list")
+public class Plan {
 
     @Id
     @GeneratedValue
