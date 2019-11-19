@@ -2,32 +2,31 @@ pipeline {
     agent any
 
     stages {
-        stage('Testing a Ryan') {
+        stage('Testing a project') {
             steps {
-		    sh 'mvn test -Dtest=ControllerAndServiceSuite'
-		    sh 'mvn test -Dtest=IntegrationSuite'
+		    echo "Testing a project"
             }
         }
-        stage('Building a Ryan') {
+        stage('Building a project') {
             steps {
                     sh 'mvn package -DskipTests'
-		    sh 'docker build -t="rakimsv/simple-project:latest" .'
+		    sh 'docker build -t="rakimsv/proper-project:latest" .'
             }
         }
-        stage('Staging a Ryan') {
+        stage('Staging a project') {
             steps {
                    echo "Staging"
             }
         }
-        stage('Deploying a Ryan') {
+        stage('Deploying a project') {
             steps {
-		   sh 'docker push "rakimsv/simple-project:latest"'
+		   sh 'docker push "rakimsv/proper-project:latest"'
                    echo "Deploy"
             }
         }
-	stage('Ryan Deployed') {
+	stage('Project Deployed') {
 	    steps {
-		    echo "Ryan Deployed"
+		    echo "Project Deployed"
 	    }
 	}
     }
