@@ -1,0 +1,11 @@
+/home/user/Desktop/proper-project/src/main/java/com/rakim/project/eventplanner/web/RedirectController.java
+/home/user/Desktop/proper-project/src/main/java/com/rakim/project/eventplanner/config/SecurityConfiguration.java
+/home/user/Desktop/proper-project/src/main/java/com/rakim/project/eventplanner/model/Event.java
+/home/user/Desktop/proper-project/src/main/java/com/rakim/project/eventplanner/web/UserController.java
+/home/user/Desktop/proper-project/src/main/java/com/rakim/project/eventplanner/web/PlanController.java
+/home/user/Desktop/proper-project/src/main/java/com/rakim/project/eventplanner/Initializer.java
+/home/user/Desktop/proper-project/src/main/java/com/rakim/project/eventplanner/model/User.java
+/home/user/Desktop/proper-project/src/main/java/com/rakim/project/eventplanner/model/UserRepository.java
+/home/user/Desktop/proper-project/src/main/java/com/rakim/project/eventplanner/model/Plan.java
+/home/user/Desktop/proper-project/src/main/java/com/rakim/project/eventplanner/model/PlanRepository.java
+/home/user/Desktop/proper-project/src/main/java/com/rakim/project/eventplanner/EventPlanner.java
