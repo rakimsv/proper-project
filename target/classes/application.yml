@@ -1,0 +1,16 @@
+server:
+  port: 80
+spring:
+  profiles:
+    active: prod
+  security:
+    oauth2:
+      client:
+        registration:
+          okta:
+            client-id: 0oa1qd3igyd9nrPmT357
+            client-secret: Rp4S5wVQe4f9kj4XvuTYryUYekGwCj-RzcsdeYhS
+            scope: openid, email, profile
+        provider:
+          okta:
+            issuer-uri: https://dev-648106.okta.com/oauth2/default
