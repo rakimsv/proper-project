@@ -35,7 +35,6 @@ public class UserController {
     @PostMapping("/api/logout")
     public ResponseEntity<?> logout(HttpServletRequest request,
                                     @AuthenticationPrincipal(expression = "idToken") OidcIdToken idToken) {
-        // send logout URL to client so they can initiate logout
         String logoutUrl = this.registration.getProviderDetails()
                 .getConfigurationMetadata().get("end_session_endpoint").toString();
 
