@@ -1,0 +1,45 @@
+---
+- hosts: webserver
+  remote_user: bike-rak
+  become: yes
+  become_method: sudo
+  tasks:
+
+    - name: run apt-get update and install python
+      raw: "{{ item }}"
+      loop:
+        - sudo apt-get update
+        - sudo apt-get -y install python
+      become: true
+
+    - name: misc task on ubuntu 18.04 instance
+      hosts: "*"
+      tasks:
+        - debug: var=ansible_host
+        
+    - name: Install pip
+      apt: name=python3-pip state=latest
+
+    - name: Checking docker on latest version
+      apt: name=docker.io state=latest
+
+    - name: Checking python
+      apt: name=python3 state=latest
+
+    - name: Checking docker-compose on latest version
+      apt: name=docker-compose state=latest
+      
+    - name: Build Docker image from Dockerfile
+      docker_image:
+        name: web
+        path: docker
+        state: build
+        
+    - name: Running the container
+      docker_container:
+        image: web:latest
+        path: docker
+        state: running
+
+    - name: Check if container is running
+      shell: docker ps
