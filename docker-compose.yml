@@ -1,0 +1,6 @@
+version: '3'
+services:
+  proper-project:
+    image: rakimsv/proper-project
+    ports:
+      - "80:80"

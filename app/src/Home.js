@@ -50,7 +50,7 @@ class Home extends Component {
   render() {
     const message = this.state.user ?
       <h2>Welcome, {this.state.user.name}!</h2> :
-      <p>Please log in to manage your contacts :)</p>;
+      <p>Please log in to manage your contacts :) hellloooooo</p>;
 
     const button = this.state.isAuthenticated ?
       <div>
